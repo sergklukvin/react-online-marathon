@@ -4,7 +4,7 @@ function modifyArray(array) {
    array[0] = 'Start';
    array[array.length-1] = 'End';
 
-    return array;
+   return array;
 }
 
 //task2
@@ -48,20 +48,20 @@ function checkAdult(age){
     
   try {
     if (age === undefined) {
-      throw new Error("Please, enter your age");
+      throw new Error('Please, enter your age');
     } else if (age < 0) {
-      throw new Error("Please, enter positive number");
-    } else if (typeof age !== "number") {
-      throw new Error("Please, enter number");
+      throw new Error('Please, enter positive number');
+    } else if (typeof age !== 'number') {
+      throw new Error('Please, enter number');
     } else if (parseInt(age) !== age) {
-      throw new Error("Please, enter Integer number");
+      throw new Error('Please, enter Integer number');
     } else if (age < 18) {
-      throw new Error("Access denied - you are too young!");
+      throw new Error('Access denied - you are too young!');
     } else {
-      console.log("Access allowed");
+      console.log('Access allowed');
     }
   } catch (exception) {
     console.log(`${exception.name} ${exception.message}`);
-  } finally {console.log("Age verification complete")}
+  } finally {console.log('Age verification complete')}
     
 }
