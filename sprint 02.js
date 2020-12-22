@@ -16,3 +16,11 @@ const sumOfLen = (...string) => {
 
 
 ////task 3
+
+const howMuchSec = (...arr) => {
+  if (arr.length === 0) return 0;
+  let dataArr = [1, 60, 3600, 86400, 604800, 2592000, 31104000];
+  return arr.reduce((accumulator, currentValue, currentIndex) => {
+    return accumulator + currentValue * dataArr[currentIndex];
+  });
+};
