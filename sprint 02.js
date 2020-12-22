@@ -24,3 +24,14 @@ const howMuchSec = (...arr) => {
     return accumulator + currentValue * dataArr[currentIndex];
   });
 };
+
+////task4
+
+const maxInterv = (...arr) => {
+  let maxNum = Math.abs(arr[1] - arr[0]);
+  if(arr.length <=1) return 0;
+  for (let i = 1; i < arr.length - 1; i++) {
+    maxNum > Math.abs(arr[i + 1] - arr[i]) ? maxNum : (maxNum = Math.abs(arr[i + 1] - arr[i]));
+  }
+  return maxNum;
+};
