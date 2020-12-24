@@ -35,3 +35,15 @@ const maxInterv = (...arr) => {
   }
   return maxNum;
 };
+
+////// task4.1
+
+const maxInterv = (...arr) => {
+    let maxNum = Math.abs(arr[1] - arr[0]), currentNum, result;
+    if(arr.length <=1) return 0;
+    for (let i = 1; i < arr.length - 1; i++) {
+      currentNum = Math.abs(arr[i + 1] - arr[i]);
+      result = maxNum > currentNum ? maxNum : currentNum;
+    }
+    return result;
+  };
