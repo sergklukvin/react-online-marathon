@@ -26,6 +26,39 @@ const movie2 = new Movie('Troya', 'historical', 2004);
 
 /// test 4
 
+const Checker = require('./Checker.js');
+
+class Student {
+  constructor(fullName, direction) {
+    this._fullName = fullName;
+    this._direction = direction;
+  }
+
+  showFullName() {
+    return this._fullName;
+  }
+
+  nameIncludes(data) {
+    return this.showFullName().includes(data);
+  }
+
+  static studentBuilder() {
+    return new this('Ihor Kohut', 'qc');
+  }
+
+  set direction(value) {
+    this._direction = value;
+  }
+
+  get direction() {
+    return this._direction;
+  }
+}
+
+const stud1 = new Student('Ivan Petrenko', 'web');
+const stud2 = new Student('Sergiy Koval', 'python');
+const stud3 = Student.studentBuilder();
+
 /// test 5
 
 function mapCreator(keys, values) {
