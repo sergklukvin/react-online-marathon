@@ -6,6 +6,16 @@ function getMin(arr) {
 
 /// test 02
 
+const product = function() {
+    return [].reduce.call(arguments, function(res, elem) {
+      return res * elem;
+    }, this.product);
+};
+
+const contextObj = {product : 10};
+
+const getProduct = product.bind(contextObj, 2, 3);
+
 ///test 03
 
 const Checker = require('./Checker.js');
