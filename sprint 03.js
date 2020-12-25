@@ -23,3 +23,15 @@ class Movie {
 
 const movie1 = new Movie('Titanic', 'drama', 1997);
 const movie2 = new Movie('Troya', 'historical', 2004);
+
+/// test 4
+
+/// test 5
+
+function mapCreator(keys, values) {
+  let newMap = new Map();
+  for (let i = 0; i < keys.length; i++) {
+    if (typeof values[i] === 'string') newMap.set(keys[i], values[i]);
+  }
+  return newMap;
+}
