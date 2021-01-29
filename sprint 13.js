@@ -15,3 +15,44 @@ function overloadedFunc(arg1 = [1, 2, 3], arg2 = 2, arg3 = (a, b) => a * b) {
       break;
   }
 }
+
+/// task2
+
+const privateSpeed = new WeakMap();
+const privateWarning = new WeakMap();
+
+class SpeedLimiter {
+  constructor(curVehSpeed, overWarning) {
+    privateSpeed.set(this, curVehSpeed);
+    privateWarning.set(this, overWarning);
+  }
+
+  accelerate(value) {
+    const curSpeed = privateSpeed.get(this) + value;
+
+    if (curSpeed <= 200) {
+      console.log(`Current speed: ${curSpeed} km/h`);
+      privateSpeed.set(this, curSpeed);
+    } else {
+      console.log(`Current speed: ${curSpeed} km/h`);
+      privateWarning.get(this)();
+      privateSpeed.set(this, 200);
+      console.log(`Current speed: ${privateSpeed.get(this)} km/h`);
+    }
+  }
+}
+
+////task3
+
+const upperCase = (str) => str.toUpperCase();
+const tripleExclaim = (str) => str+'!!!';
+const split = (separator) => str => str.split(separator);
+const join = (separator) => str => str.join(separator);
+const copy = (str) => `${str} ${str}`;
+
+const createComposition = (...functions) => input => functions.reduce( 
+    (acc, fn) => fn(acc),
+    input
+);
+
+const result = createComposition(upperCase, tripleExclaim, split('_'), join(' '), copy);
