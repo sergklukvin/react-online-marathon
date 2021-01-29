@@ -116,3 +116,64 @@ class WarPlane extends Plane {
     );
   }
 }
+
+//// task5
+class PizzaMaker {
+  constructor(size, kind) {
+    this.size = size;
+    this.kind = kind;
+    this.ingredients = [];
+  }
+
+  addIngredient(ingredient) {
+    const presentIngredient = this.ingredients.indexOf(ingredient);
+
+    if (presentIngredient === -1) {
+      this.ingredients.push(ingredient);
+      console.log(`${ingredient.param} has been added`);
+    } else {
+      console.log('Such an ingredient already exists!');
+    }
+  }
+
+  deleteIngredient(ingredient) {
+    const presentIngredientDel = this.ingredients.indexOf(ingredient);
+
+    if (presentIngredientDel !== -1) {
+      const delIngredient = this.ingredients.splice(presentIngredientDel, 1);
+      console.log(`${delIngredient[0].param} has been deleted`);
+    }
+  }
+
+  getIngredients() {
+    return this.ingredients;
+  }
+
+  getSize() {
+    return this.size.param;
+  }
+
+  getKind() {
+    return this.kind.param;
+  }
+
+  calculatePrice() {
+    let priseOfIng = 0;
+
+    if (this.ingredients.length !== 0) {
+      this.ingredients.forEach((el) => (priseOfIng += el.price));
+    }
+
+    return this.size.price + this.kind.price + priseOfIng;
+  }
+
+  calculateCalories() {
+    let calorieOfIng = 0;
+
+    if (this.ingredients.length !== 0) {
+      this.ingredients.forEach((el) => (calorieOfIng += el.calorie));
+    }
+
+    return this.size.calorie + this.kind.calorie + calorieOfIng;
+  }
+}
