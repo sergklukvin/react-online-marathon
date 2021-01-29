@@ -56,3 +56,63 @@ const createComposition = (...functions) => input => functions.reduce(
 );
 
 const result = createComposition(upperCase, tripleExclaim, split('_'), join(' '), copy);
+
+///// task4
+
+class Plane {
+  constructor(model, fuelSupply, fuelConsumption) {
+    this.model = model;
+    this.fuelSupply = fuelSupply;
+    this.fuelConsumption = fuelConsumption;
+  }
+
+  calcFlightRange() {
+    return (this.fuelSupply / this.fuelConsumption) * 100;
+  }
+
+  static sortFlightRange(planesArray) {
+    planesArray.sort((a, b) => a.calcFlightRange() - b.calcFlightRange());
+
+    planesArray.forEach((element) => {
+      console.log(`${element.model}: ${element.calcFlightRange()}`);
+    });
+  }
+}
+
+class TransportPlane extends Plane {
+  constructor(model, fuelSupply, fuelConsumption, cargo, addTank) {
+    super(model, fuelSupply, fuelConsumption);
+    this.cargo = cargo;
+    this.addTank = addTank;
+  }
+
+  calcFlightRange() {
+    return ((this.fuelSupply + this.addTank) / this.fuelConsumption) * 100;
+  }
+}
+
+class PassengerPlane extends Plane {
+  constructor(model, fuelSupply, fuelConsumption, passengers, refueling) {
+    super(model, fuelSupply, fuelConsumption);
+    this.passengers = passengers;
+    this.refueling = refueling;
+  }
+
+  calcFlightRange() {
+    return ((this.fuelSupply + this.refueling) / this.fuelConsumption) * 100;
+  }
+}
+
+class WarPlane extends Plane {
+  constructor(model, fuelSupply, fuelConsumption, missiles, aerodynamicsKoef) {
+    super(model, fuelSupply, fuelConsumption);
+    this.missiles = missiles;
+    this.aerodynamicsKoef = aerodynamicsKoef;
+  }
+
+  calcFlightRange() {
+    return (
+      (this.fuelSupply / this.fuelConsumption) * 100 * this.aerodynamicsKoef
+    );
+  }
+}
